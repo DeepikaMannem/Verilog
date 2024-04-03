@@ -8,18 +8,18 @@ module tb;
     $dumpfile("dump.vcd");
     clk = 0; rst = 0; d_in = 0;
   end
-  initial begin
-    #2 rst = 1;
-    #3 rst = 0;    
+  initial begin  
     repeat (1) begin
+       #2 d_in = 1;
+      #4 d_in = 0;
+      #3 d_in = 0;
       #2 d_in = 1;
-      #2 d_in = 1;
-      #2 d_in = 0;
-      #2 d_in = 1;
-      #2 d_in = 0;
-      #4 d_in = 1;
-      #5 rst = 1;
+      
+      #10 d_in = 0;
+      #15 d_in = 1;
+      #16 d_in = 0;
+      //#5 rst = 0;
     end
-    #30 $finish;
+    #40 $finish;
   end
 endmodule
